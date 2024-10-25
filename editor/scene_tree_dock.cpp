@@ -2113,19 +2113,19 @@ void SceneTreeDock::perform_node_renames(Node *p_base, HashMap<Node *, NodePath>
 	List<PropertyInfo> properties;
 	p_base->get_property_list(&properties);
 
-	for (const PropertyInfo &E : properties) {
-		if (!(E.usage & (PROPERTY_USAGE_STORAGE | PROPERTY_USAGE_EDITOR))) {
-			continue;
-		}
-		String propertyname = E.name;
-		Variant old_variant = p_base->get(propertyname);
-		Variant updated_variant = old_variant;
-		if (_check_node_path_recursive(p_base, updated_variant, p_renames)) {
-			EditorUndoRedoManager *undo_redo = EditorUndoRedoManager::get_singleton();
-			undo_redo->add_do_property(p_base, propertyname, updated_variant);
-			undo_redo->add_undo_property(p_base, propertyname, old_variant);
-		}
-	}
+	// for (const PropertyInfo &E : properties) {
+	// 	if (!(E.usage & (PROPERTY_USAGE_STORAGE | PROPERTY_USAGE_EDITOR))) {
+	// 		continue;
+	// 	}
+	// 	String propertyname = E.name;
+	// 	Variant old_variant = p_base->get(propertyname);
+	// 	Variant updated_variant = old_variant;
+	// 	if (_check_node_path_recursive(p_base, updated_variant, p_renames)) {
+	// 		EditorUndoRedoManager *undo_redo = EditorUndoRedoManager::get_singleton();
+	// 		undo_redo->add_do_property(p_base, propertyname, updated_variant);
+	// 		undo_redo->add_undo_property(p_base, propertyname, old_variant);
+	// 	}
+	// }
 
 	for (int i = 0; i < p_base->get_child_count(); i++) {
 		perform_node_renames(p_base->get_child(i), p_renames, r_rem_anims);

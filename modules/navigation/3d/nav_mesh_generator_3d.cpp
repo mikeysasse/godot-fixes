@@ -253,6 +253,9 @@ void NavMeshGenerator3D::generator_thread_bake(void *p_arg) {
 }
 
 void NavMeshGenerator3D::generator_parse_geometry_node(const Ref<NavigationMesh> &p_navigation_mesh, Ref<NavigationMeshSourceGeometryData3D> p_source_geometry_data, Node *p_node, bool p_recurse_children) {
+	if (p_node->has_meta("skip_navmesh") && p_node->get_meta("skip_navmesh"))
+		return;
+	
 	generator_parse_meshinstance3d_node(p_navigation_mesh, p_source_geometry_data, p_node);
 	generator_parse_multimeshinstance3d_node(p_navigation_mesh, p_source_geometry_data, p_node);
 	generator_parse_staticbody3d_node(p_navigation_mesh, p_source_geometry_data, p_node);

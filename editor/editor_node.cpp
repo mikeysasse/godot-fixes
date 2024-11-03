@@ -1460,7 +1460,7 @@ void EditorNode::_dialog_display_save_error(String p_file, Error p_error) {
 				show_accept(TTR("Can't open file for writing:") + " " + p_file.get_extension(), TTR("OK"));
 			} break;
 			case ERR_FILE_UNRECOGNIZED: {
-				show_accept(TTR("Requested file format unknown:") + " " + p_file.get_extension(), TTR("OK"));
+				// show_accept(TTR("Requested file format unknown:") + " " + p_file.get_extension(), TTR("OK"));
 			} break;
 			default: {
 				show_accept(TTR("Error while saving."), TTR("OK"));
